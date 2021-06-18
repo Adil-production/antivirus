@@ -122,7 +122,7 @@
       top: 80%;
       left: 50%;
       transform: translate(-50% , -50%);
-      color: white;
+      color: rgb(0, 68, 255);
 }
 #prot{
   background: linear-gradient(90deg, rgb(0, 81, 255) 0%, rgb(0, 20, 59) 100%);
@@ -140,10 +140,54 @@
       left: 46%;
       transform: translate(-50% , -50%);
 }
+body{
+  background-image: url("back.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+ 
+  }
+
+#base-timer-label{
+  animation-name: gradient;
+  animation-duration: 11s;
+
+}
+@keyframes gradient{
+  0%{
+    color: green;
+  }
+  25%{
+    color: rgb(255, 153, 0);
+  }
+  50%{
+    color: rgb(167, 100, 0);
+  }
+  75%{
+    color: rgb(255, 0, 0);
+  }
+  100%{
+    
+    color: rgb(124, 0, 0);
+  }
+}
+@media (min-width : 800px) {
+  body{
+    background-image: none;
+    background: linear-gradient(90deg, rgba(0,36,112,1) 0%, rgba(0,83,255,1) 100%);
+  }
+  #clean{
+    color: white;
+  }
+  #prot{
+    color: #0099ff;
+    background: white;
+  }
+}
     </style>
 </head>
 <body>
-    <img src="security.png" width="300px" height="300px" id="img"/>
+    
     <div id="all">
         
         <button id="prot" onclick="protect()">scan now !</button>
@@ -159,15 +203,14 @@
 
 
 
-<script>
-    
-</script>
+
     <script src="https://cdn.cloudmersive.com/jsclient/cloudmersive-virus-client.js"></script>
     <script>
         function protect(){
-            document.getElementById("img").style.display = "none";
+            
             document.getElementById("prot").style.display = "none";
             document.getElementById("app").style.display = "block";
+            
             const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
@@ -196,7 +239,7 @@ document.getElementById("app").innerHTML = `
 <div class="base-timer">
   <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <g class="base-timer__circle">
-      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+      <circle class="base-timer__path-elapsed" id="circle" cx="50" cy="50" r="45"></circle>
       <path
         id="base-timer-path-remaining"
         stroke-dasharray="283"
@@ -239,7 +282,7 @@ function startTimer() {
       document.getElementById("clean").style.display = "block";
       document.getElementById("prot").disabled = "true";
       document.getElementById("prot").style.display = "block";
-      document.getElementById("img").style.display = "block";
+      
 
     }
   }, 1000);
